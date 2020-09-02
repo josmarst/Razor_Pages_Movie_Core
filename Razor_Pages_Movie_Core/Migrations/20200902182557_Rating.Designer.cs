@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Razor_Pages_Movie_Core.Data;
 
 namespace Razor_Pages_Movie_Core.Migrations
 {
     [DbContext(typeof(Razor_Pages_Movie_CoreContext))]
-    partial class Razor_Pages_Movie_CoreContextModelSnapshot : ModelSnapshot
+    [Migration("20200902182557_Rating")]
+    partial class Rating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,25 +29,19 @@ namespace Razor_Pages_Movie_Core.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
